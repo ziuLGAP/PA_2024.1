@@ -1,24 +1,30 @@
-function Process(state){
-  this.state = state
+let instance
+
+class Wallet {
+    constructor(){
+        if (instance) {
+            throw new Error("Essa carteira já existe")
+        }
+        this.wallet = 0
+        instance = this
+    }
+    getWallet() {
+        console.log(this.wallet)
+    }
+    addMoney(money) {
+        if(isNaN(money)){
+            throw new Error("Coloque valores numéricos")
+        }
+        this.wallet += money
+    }
+    pay(money) {
+        if(isNaN(money)){
+            throw new Error("Coloque valores numéricos")
+        }
+        this.wallet -= money
+    }
 }
 
-const Singleton = (function(){
-  function ProcessManager(){
-    this.numProcess = 0
-  }
+const singletonWallet = new Wallet()
 
-  let pManager
-
-  function createProcessManager(){
-    pManager = new ProcessManager()
-    return pManager
-  }
-
-  return{
-    getProcessManager:()=>{
-      if(!pManager)
-        pManager = createProcessManager()
-      return pManager
-    }
-  }  
-})()
+export default singletonWallet
