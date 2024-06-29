@@ -13,7 +13,7 @@ class Rule{
 
 class MinLenRule extends Rule{
     validate(password){
-        if(password.lenght < 10){
+        if(password.length < 10){
             return false
         }
         if(this.next === null){
@@ -26,7 +26,7 @@ class MinLenRule extends Rule{
 
 class MaxLenRule extends Rule{
     validate(password){
-        if(password.lenght > 15){
+        if(password.length > 15){
             return false
         }
         if(this.next === null){
