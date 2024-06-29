@@ -8,8 +8,9 @@ Subject.prototype = {
     },
     unsubscribe: function(fnToRemove){
         this.observers = this.observers.filter(fn => {
-            if(fn != fnToRemove)
+            if(fn != fnToRemove){
                 return fn
+            }
         })
     },
     fire: function(){
